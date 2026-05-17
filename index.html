@@ -118,33 +118,37 @@ background-color: #f39c12;
 </head>
 <body>
 <div class="banner"></div>
-<div class="container">
-<div class="logo-header">
-<img src="1000263173.jpeg" alt="Viajando Latinoamérica Logo" style="display: block; margin: 0 auto; width: 160px; height: 160px; border-radius: 50% !important; object-fit: cover; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); border: 4px solid white;">
-</div>
-<h2>Agendar Travesía</h2>
-<form id="agendamientoForm">
-<div class="step-title">Paso 1: Datos de la Travesía</div>
-<div class="form-group">
-<label>Origen</label>
-<input type="text" value="Guyana (Salidas)" readonly>
-</div>
-<div class="grid-2">
-<div class="form-group">
-<label>País Destino</label>
-<select id="paisDestino" required onchange="manejarCambioPais()">
-<option value="">Selecciona un país...</option>
-<option value="Brasil">Brasil</option>
-<option value="Uruguay">Uruguay</option>
-<option value="Paraguay">Paraguay</option>
-</select>
-</div>
-<div class="form-group">
-<label>Ciudad Destino</label>
-<div id="contenedorCiudad">
-<input type="text" id="ciudadDestino" readonly placeholder="Selecciona un
-país primero...">
-</div>
+
+    <div class="container">
+        <div class="logo-header">
+            <img src="1000263173.jpeg" alt="Viajando Latinoamérica Logo" style="display: block; margin: 0 auto; width: 160px; height: 160px; border-radius: 50% !important; object-fit: cover; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); border: 4px solid white;">
+        </div>
+
+        <h2>Agendar Travesía</h2>
+        
+        <form id="agendamientoForm">
+            <div class="step-title">Paso 1: Datos de la Travesía</div>
+            <div class="form-group">
+                <label>Origen</label>
+                <input type="text" value="Guyana (Salidas)" readonly>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>País Destino</label>
+                    <select id="paisDestino" required onchange="manejarCambioPais()">
+                        <option value="">Selecciona un país...</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Paraguay">Paraguay</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ciudad Destino</label>
+                    <div id="contenedorCiudad">
+                        <input type="text" id="ciudadDestino" readonly placeholder="Selecciona un país primero...">
+                    </div>
+                </div>
+            </div>
 </div>
 </div>
 <div class="form-group">
