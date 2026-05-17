@@ -8,352 +8,380 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <style>
 :root {
---azul: #1da1f2;
---amarillo: #f5b041;
---oscuro: #2c3e50;
---gris-claro: #f8f9f9;
+    --azul: #1da1f2;
+    --amarillo: #f5b041;
+    --oscuro: #2c3e50;
+    --gris-claro: #f8f9f9;
 }
 body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-padding: 0;
-background-color: var(--gris-claro);
-color: var(--oscuro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gris-claro);
+    color: var(--oscuro);
 }
 .banner {
-width: 100%;
-height: 350px;
-background: url('1000217700.png') center/cover no-repeat;
-display: flex;
-align-items: center;
-justify-content: center;
+    width: 100%;
+    height: 350px;
+    background: url('1000217700.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .container {
-max-width: 650px;
-margin: -50px auto 50px auto;
-background: white;
-padding: 30px;
-border-radius: 15px;
-box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-position: relative;
+    max-width: 650px;
+    margin: -100px auto 50px auto; /* Ajustado para superponerse mejor al diseño del banner */
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
 }
 .logo-header {
-text-align: center;
-margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 .logo-header img {
-max-width: 180px;
+    display: block; 
+    margin: 0 auto; 
+    width: 160px; 
+    height: 160px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); 
+    border: 4px solid white;
 }
 h2 {
-text-align: center;
-color: var(--oscuro);
-margin-top: 0;
+    text-align: center;
+    color: var(--oscuro);
+    margin-top: 0;
 }
 .step-title {
-background: #ebf5fb;
-padding: 8px 12px;
-border-left: 5px solid var(--azul);
-font-weight: bold;
-margin: 25px 0 15px 0;
+    background: #ebf5fb;
+    padding: 10px 12px;
+    border-left: 5px solid var(--azul);
+    font-weight: bold;
+    margin: 25px 0 15px 0;
 }
 .form-group {
-margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 label {
-display: block;
-margin-bottom: 5px;
-font-weight: 600;
-font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
 }
 input, select {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 8px;
-box-sizing: border-box;
-font-size: 15px;
-background-color: white;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: white;
 }
 input[readonly] {
-background-color: #eaeded;
-cursor: not-allowed;
+    background-color: #eaeded;
+    cursor: not-allowed;
 }
 .grid-2 {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 .pasajero-input {
-display: flex;
-gap: 10px;
-margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 .btn-add {
-background-color: var(--azul);
-color: white;
-border: none;
-padding: 8px 15px;
-border-radius: 8px;
-cursor: pointer;
-font-weight: bold;
-font-size: 16px;
+    background-color: var(--azul);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+.btn-add:hover {
+    background-color: #1585c2;
 }
 .btn-submit {
-background-color: var(--amarillo);
-color: var(--oscuro);
-border: none;
-width: 100%;
-padding: 15px;
-border-radius: 8px;
-font-size: 18px;
-font-weight: bold;
-cursor: pointer;
-transition: background 0.2s;
-margin-top: 25px;
+    background-color: var(--amarillo);
+    color: var(--oscuro);
+    border: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 25px;
 }
 .btn-submit:hover {
-background-color: #f39c12;
+    background-color: #f39c12;
 }
 </style>
 </head>
 <body>
+
 <div class="banner"></div>
 
 <div class="container">
-<div class="logo-header">
-<img src="1000263173.jpeg" alt="Viajando Latinoamérica Logo" style="display: block; margin: 0 auto; width: 160px; height: 160px; border-radius: 50% !important; object-fit: cover; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); border: 4px solid white;">
-</div>
-<h2>Agendar Travesía</h2>
-<form id="agendamientoForm">
-<div class="step-title">Paso 1: Datos de la Travesía</div>
-<div class="form-group">
-<label>Origen</label>
-<input type="text" value="Guyana (Salidas)" readonly>
-</div>
-<div class="grid-2">
-<div class="form-group">
-<label>País Destino</label>
-<select id="PaisDestino" required onchange="manejarCambioPais()">
-<option value="">Selecciona un país...</option>
-<option value="Brasil">Brasil</option>
-<option value="Uruguay">Uruguay</option>
-<option value="Paraguay">Paraguay</option>
-</select>
-</div>
-<div class="form-group">
-<label>Ciudad Destino</label>
-<div id="contenedorCiudad">
-<input type="text" id="ciudadDestino" readonly placeholder="Selecciona un país primero...">
-</div>
-</div>
+    <div class="logo-header">
+        <img src="1000263173.jpeg" alt="Viajando Latinoamérica Logo">
+    </div>
+    <h2>Agendar Travesía</h2>
+    
+    <form id="agendamientoForm">
+        <div class="step-title">Paso 1: Datos de la Travesía</div>
+        <div class="form-group">
+            <label>Origen</label>
+            <input type="text" value="Guyana (Salidas)" readonly>
+        </div>
+        
+        <div class="grid-2">
+            <div class="form-group">
+                <label>País Destino</label>
+                <select id="paisDestino" required onchange="manejarCambioPais()">
+                    <option value="">Selecciona un país...</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Paraguay">Paraguay</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ciudad Destino</label>
+                <div id="contenedorCiudad">
+                    <input type="text" id="ciudadDestino" readonly placeholder="Selecciona un país primero...">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha Programada de Viaje</label>
+            <input type="date" id="fechaViaje" required>
+        </div>
+
+        <div class="step-title">Paso 2: Información de los Pasajeros</div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>Cantidad de Adultos</label>
+                <input type="number" id="adultos" min="1" value="1" required>
+            </div>
+            <div class="form-group">
+                <label>Menores de 4 Años</label>
+                <input type="number" id="menores" min="0" value="0" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Nombres y Apellidos de los Pasajeros</label>
+            <div id="contenedorPasajeros">
+                <div class="pasajero-input">
+                    <input type="text" class="pasajero-nombre" placeholder="Nombre completo del passenger" required>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="agregarPasajeroField()">+ Agregar Pasajero</button>
+        </div>
+
+        <div class="step-title">Paso 3: Datos de Contacto</div>
+        <div class="form-group">
+            <label>Número de Teléfono (WhatsApp Internacional)</label>
+            <input type="tel" id="telefono" placeholder="+55 ... / +592 ..." required>
+        </div>
+        
+        <button type="submit" class="btn-submit">[ Finalizar Agendamiento ]</button>
+    </form>
 </div>
 
-            <div class="step-title">Paso 2: Información de los Pasajeros</div>
-<div class="step-title">Paso 2: Información de los Pasajeros</div>
-<div class="grid-2">
-<div class="form-group">
-<label>Cantidad de Adultos</label>
-<input type="number" id="adultos" min="1" value="1" required>
-</div>
-<div class="form-group">
-<label>Menores de 4 Años</label>
-<input type="number" id="menores" min="0" value="0" required>
-</div>
-</div>
-<div class="form-group">
-<label>Nombres y Apellidos de los Pasajeros</label>
-<div id="contenedorPasajeros">
-<div class="pasajero-input">
-<input type="text" class="pasajero-nombre" placeholder="Nombre completo
-del pasajero" required>
-</div>
-</div>
-<button type="button" class="btn-add" onclick="agregarPasajeroField()">+
-Agregar Pasajero</button>
-</div>
-<div class="step-title">Paso 3: Datos de Contacto</div>
-<div class="form-group">
-<label>Número de Teléfono (WhatsApp Internacional)</label>
-<input type="tel" id="telefono" placeholder="+55 ... / +592 ..." required>
-</div>
-<button type="submit" class="btn-submit">[ Finalizar Agendamiento ]</button>
-</form>
-</div>
 <script>
-// Inicializar EmailJS con tu llave pública
+// Inicializar EmailJS
 (function() {
-emailjs.init("TU_PUBLIC_KEY");
+    emailjs.init("TU_PUBLIC_KEY");
 })();
+
 const capitalesBrasil = [
-"Aracaju (SE)", "Belém (PA)", "Belo Horizonte (MG)", "Boa Vista (RR)",
-"Campo Grande (MS)", "Cuiabá (MT)", "Curitiba (PR)", "Florianópolis (SC)",
-"Fortaleza (CE)", "Goiânia (GO)", "João Pessoa (PB)", "Macapá (AP)",
-"Maceió (AL)", "Manaus (AM)", "Natal (RN)", "Palmas (TO)",
-"Porto Alegre (RS)", "Porto Velho (RO)", "Recife (PE)", "Rio Branco (AC)",
-"Rio de Janeiro (RJ)", "Salvador (BA)", "São Luís (MA)", "São Paulo (SP)",
-"Teresina (PI)", "Vitória (ES)", "Brasília (DF)"
+    "Aracaju (SE)", "Belém (PA)", "Belo Horizonte (MG)", "Boa Vista (RR)",
+    "Campo Grande (MS)", "Cuiabá (MT)", "Curitiba (PR)", "Florianópolis (SC)",
+    "Fortaleza (CE)", "Goiânia (GO)", "João Pessoa (PB)", "Macapá (AP)",
+    "Maceió (AL)", "Manaus (AM)", "Natal (RN)", "Palmas (TO)",
+    "Porto Alegre (RS)", "Porto Velho (RO)", "Recife (PE)", "Rio Branco (AC)",
+    "Rio de Janeiro (RJ)", "Salvador (BA)", "São Luís (MA)", "São Paulo (SP)",
+    "Teresina (PI)", "Vitória (ES)", "Brasília (DF)"
 ];
+
 function manejarCambioPais() {
-const pais = document.getElementById('paisDestino').value;
-const contenedor = document.getElementById('contenedorCiudad');
-if (pais === "Brasil") {
-let selectHTML = `<select id="ciudadDestino" required>
-<option value="">Selecciona la capital...</option>`;
-capitalesBrasil.forEach(capital => {
-selectHTML += `<option value="${capital}">${capital}</option>`;
-});
-selectHTML += `</select>`;
-contenedor.innerHTML = selectHTML;
-} else if (pais === "Uruguay") {
-contenedor.innerHTML = `<input type="text" id="ciudadDestino"
-value="Montevideo" readonly>`;
-} else if (pais === "Paraguay") {
-contenedor.innerHTML = `<input type="text" id="ciudadDestino" value="Asunción"
-readonly>`;
-} else {
-contenedor.innerHTML = `<input type="text" id="ciudadDestino" readonly
-placeholder="Selecciona un país primero...">`;
+    const pais = document.getElementById('paisDestino').value;
+    const contenedor = document.getElementById('contenedorCiudad');
+    
+    if (pais === "Brasil") {
+        let selectHTML = `<select id="ciudadDestino" required>
+            <option value="">Selecciona la capital...</option>`;
+        capitalesBrasil.forEach(capital => {
+            selectHTML += `<option value="${capital}">${capital}</option>`;
+        });
+        selectHTML += `</select>`;
+        contenedor.innerHTML = selectHTML;
+    } else if (pais === "Uruguay") {
+        contenedor.innerHTML = `<input type="text" id="ciudadDestino" value="Montevideo" readonly>`;
+    } else if (pais === "Paraguay") {
+        contenedor.innerHTML = `<input type="text" id="ciudadDestino" value="Asunción" readonly>`;
+    } else {
+        contenedor.innerHTML = `<input type="text" id="ciudadDestino" readonly placeholder="Selecciona un país primero...">`;
+    }
 }
-}
+
 function agregarPasajeroField() {
-const contenedor = document.getElementById('contenedorPasajeros');
-const div = document.createElement('div');
-div.className = 'pasajero-input';
-div.innerHTML = `
-<input type="text" class="pasajero-nombre" placeholder="Nombre completo del
-siguiente pasajero" required>
-<button type="button" style="background:#e74c3c; color:white; border:none;
-border-radius:8px; cursor:pointer; padding: 0 10px;"
-onclick="this.parentElement.remove()">X</button>
-`;
-contenedor.appendChild(div);
+    const contenedor = document.getElementById('contenedorPasajeros');
+    const div = document.createElement('div');
+    div.className = 'pasajero-input';
+    div.innerHTML = `
+        <input type="text" class="pasajero-nombre" placeholder="Nombre completo del siguiente pasajero" required>
+        <button type="button" style="background:#e74c3c; color:white; border:none; border-radius:8px; cursor:pointer; padding: 0 15px;" onclick="this.parentElement.remove()">X</button>
+    `;
+    contenedor.appendChild(div);
 }
-document.getElementById('agendamientoForm').addEventListener('submit', function(e)
-{
-e.preventDefault();
-const paisDestino = document.getElementById('paisDestino').value;
-const ciudadDestino = document.getElementById('ciudadDestino').value;
-const fechaViaje = document.getElementById('fechaViaje').value;
-const adultos = document.getElementById('adultos').value;
-const menores = document.getElementById('menores').value;
-const telefono = document.getElementById('telefono').value;
-const camposNombres = document.querySelectorAll('.pasajero-nombre');
-let listaPasajeros = [];
-camposNombres.forEach((input, index) => {
-listaPasajeros.push(`${index + 1}. ${input.value}`);
-});
-// --- 1. GENERACIÓN DEL PDF ---
-const { jsPDF } = window.jspdf;
-const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
-doc.setFillColor(29, 161, 242);
-doc.rect(15, 15, 180, 25, 'F');
-doc.setTextColor(255, 255, 255);
-doc.setFont("Helvetica", "bold");
-doc.setFontSize(20);
-doc.text("VIAJANDO LATINOAMÉRICA", 22, 29);
-doc.setFont("Helvetica", "italic");
-doc.setFontSize(10);
-doc.text("Tu oportunidad está aquí", 22, 35);
-doc.setFillColor(245, 176, 65);
-doc.rect(135, 22, 52, 10, 'F');
-doc.setTextColor(44, 62, 80);
-doc.setFont("Helvetica", "bold");
-doc.setFontSize(9);
-doc.text("RECIBO DE AGENDAMIENTO", 137, 28);
-doc.setTextColor(44, 62, 80);
-doc.setFontSize(10);
-doc.setFont("Helvetica", "bold");
-doc.text("Código Solicitud:", 15, 52);
-doc.setFont("Helvetica", "normal");
-doc.text("VL-" + Math.floor(1000 + Math.random() * 9000), 48, 52);
-doc.setFont("Helvetica", "bold");
-doc.text("Fecha Emisión:", 120, 52);
-doc.setFont("Helvetica", "normal");
-doc.text(new Date().toLocaleDateString('es-ES'), 150, 52);
-doc.setDrawColor(234, 237, 237);
-doc.line(15, 58, 195, 58);
-doc.setFont("Helvetica", "bold");
-doc.setFontSize(12);
-doc.setTextColor(29, 161, 242);
-doc.text("1. DETALLES DE LA TRAVESÍA", 15, 68);
-doc.setFontSize(10);
-doc.setTextColor(44, 62, 80);
-doc.text(`• Origen de Salida: Guyana`, 20, 76);
-doc.text(`• País Destino Solicitado: ${paisDestino}`, 20, 83);
-doc.text(`• Ciudad de Destino (Capital): ${ciudadDestino}`, 20, 90);
-doc.text(`• Fecha Programada de Viaje: ${fechaViaje}`, 20, 97);
-doc.setFont("Helvetica", "bold");
-doc.setFontSize(12);
-doc.setTextColor(29, 161, 242);
-doc.text("2. INFORMACIÓN DE LOS PASAJEROS", 15, 110);
-doc.setFontSize(10);
-doc.setTextColor(44, 62, 80);
-doc.text(`• Cantidad de Adultos: ${adultos}`, 20, 118);
-doc.text(`• Menores de 4 Años: ${menores}`, 20, 125);
-doc.text(`• Teléfono de Contacto: ${telefono}`, 20, 132);
-doc.text("Nombres del listado:", 20, 142);
-doc.setFont("Helvetica", "normal");
-let yPos = 149;
-listaPasajeros.forEach(pasajero => {
-doc.text(pasajero, 25, yPos);
-yPos += 7;
-});
-yPos += 5;
-doc.setFillColor(235, 245, 251);
-doc.rect(15, yPos, 180, 22, 'F');
-doc.setDrawColor(29, 161, 242);
-doc.setLineWidth(1);
-doc.line(15, yPos, 15, yPos + 22);
-doc.setTextColor(44, 62, 80);
-doc.setFont("Helvetica", "bold");
-doc.text("¡Muchas gracias por su confianza en Viajando Latinoamérica!", 20, yPos +
-6);
-doc.setFont("Helvetica", "normal");
-doc.setFontSize(9.5);
-doc.text("Nos entusiasma ser parte de su próxima travesía. Nuestro equipo ya ha
-recibido los detalles", 20, yPos + 12);
-doc.text("de su solicitud y está procesando las rutas logísticas para garantizarle un
-viaje óptimo.", 20, yPos + 17);
-yPos += 32;
-doc.setFillColor(254, 249, 231);
-doc.rect(15, yPos, 180, 25, 'F');
-doc.setDrawColor(245, 176, 65);
-doc.rect(15, yPos, 180, 25);
-doc.setTextColor(192, 57, 43);
-doc.setFont("Helvetica", "bold");
-doc.setFontSize(10);
-doc.text("⚠️ CUALQUIER DUDA CONFERIR CON LOS ADMINISTRADORES:", 20,
-yPos + 7);
-doc.setTextColor(44, 62, 80);
-doc.text("• PIPO:", 20, yPos + 14);
-doc.setFont("Helvetica", "normal");
-doc.text("+55 41 99993-2957", 38, yPos + 14);
-doc.setFont("Helvetica", "bold");
-doc.text("• MICHEL:", 20, yPos + 20);
-doc.setFont("Helvetica", "normal");
-doc.text("+53 5 006-8487", 42, yPos + 20);
-// Descarga automática del recibo
-doc.save(`Recibo_ViajandoLatinoamerica_${ciudadDestino}.pdf`);
-// --- 2. ENVÍO DEL EMAIL OCULTO EN SEGUNDO PLANO ---
-const datosCorreo = {
-paisDestino: paisDestino,
-ciudadDestino: ciudadDestino,
-fechaViaje: fechaViaje,
-adultos: adultos,
-menores: menores,
-telefono: telefono,
-listaPasajeros: listaPasajeros.join(", ")
-};
-emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", datosCorreo)
-.then(function(response) {
-// Pantalla de Éxito / Resumen para el cliente
-alert("¡Agendamiento Exitoso! Tu travesía ha sido registrada y tu recibo PDF se
-ha descargado.");
-}, function(error) {
-console.error("Fallo al enviar informe interno:", error);
-alert("¡Agendamiento Exitoso! Tu recibo se descargó (Aviso: Error de red
-interno).");
-});
+
+document.getElementById('agendamientoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const paisDestino = document.getElementById('paisDestino').value;
+    const ciudadDestino = document.getElementById('ciudadDestino').value;
+    const fechaViaje = document.getElementById('fechaViaje').value;
+    const adultos = document.getElementById('adultos').value;
+    const menores = document.getElementById('menores').value;
+    const telefono = document.getElementById('telefono').value;
+    
+    const camposNombres = document.querySelectorAll('.pasajero-nombre');
+    let listaPasajeros = [];
+    camposNombres.forEach((input, index) => {
+        listaPasajeros.push(`${index + 1}. ${input.value}`);
+    });
+
+    // --- 1. GENERACIÓN DEL PDF ---
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+    
+    doc.setFillColor(29, 161, 242);
+    doc.rect(15, 15, 180, 25, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("VIAJANDO LATINOAMÉRICA", 22, 29);
+    doc.setFont("Helvetica", "italic");
+    doc.setFontSize(10);
+    doc.text("Tu oportunidad está aquí", 22, 35);
+    
+    doc.setFillColor(245, 176, 65);
+    doc.rect(135, 22, 52, 10, 'F');
+    doc.setTextColor(44, 62, 80);
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(9);
+    doc.text("RECIBO DE AGENDAMIENTO", 137, 28);
+    
+    doc.setTextColor(44, 62, 80);
+    doc.setFontSize(10);
+    doc.setFont("Helvetica", "bold");
+    doc.text("Código Solicitud:", 15, 52);
+    doc.setFont("Helvetica", "normal");
+    doc.text("VL-" + Math.floor(1000 + Math.random() * 9000), 48, 52);
+    
+    doc.setFont("Helvetica", "bold");
+    doc.text("Fecha Emisión:", 120, 52);
+    doc.setFont("Helvetica", "normal");
+    doc.text(new Date().toLocaleDateString('es-ES'), 150, 52);
+    
+    doc.setDrawColor(234, 237, 237);
+    doc.line(15, 58, 195, 58);
+    
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(29, 161, 242);
+    doc.text("1. DETALLES DE LA TRAVESÍA", 15, 68);
+    doc.setFontSize(10);
+    doc.setTextColor(44, 62, 80);
+    doc.text(`• Origen de Salida: Guyana`, 20, 76);
+    doc.text(`• País Destino Solicitado: ${paisDestino}`, 20, 83);
+    doc.text(`• Ciudad de Destino (Capital): ${ciudadDestino}`, 20, 90);
+    doc.text(`• Fecha Programada de Viaje: ${fechaViaje}`, 20, 97);
+    
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(29, 161, 242);
+    doc.text("2. INFORMACIÓN DE LOS PASAJEROS", 15, 110);
+    doc.setFontSize(10);
+    doc.setTextColor(44, 62, 80);
+    doc.text(`• Cantidad de Adultos: ${adultos}`, 20, 118);
+    doc.text(`• Menores de 4 Años: ${menores}`, 20, 125);
+    doc.text(`• Teléfono de Contacto: ${telefono}`, 20, 132);
+    doc.text("Nombres del listado:", 20, 142);
+    
+    doc.setFont("Helvetica", "normal");
+    let yPos = 149;
+    listaPasajeros.forEach(pasajero => {
+        doc.text(pasajero, 25, yPos);
+        yPos += 7;
+    });
+    
+    yPos += 5;
+    doc.setFillColor(235, 245, 251);
+    doc.rect(15, yPos, 180, 22, 'F');
+    doc.setDrawColor(29, 161, 242);
+    doc.setLineWidth(1);
+    doc.line(15, yPos, 15, yPos + 22);
+    doc.setTextColor(44, 62, 80);
+    doc.setFont("Helvetica", "bold");
+    doc.text("¡Muchas gracias por su confianza en Viajando Latinoamérica!", 20, yPos + 6);
+    doc.setFont("Helvetica", "normal");
+    doc.setFontSize(9.5);
+    doc.text("Nos entusiasma ser parte de su próxima travesía. Nuestro equipo ya ha recibido los detalles", 20, yPos + 12);
+    doc.text("de su solicitud y está procesando las rutas logísticas para garantizarle un viaje óptimo.", 20, yPos + 17);
+    
+    yPos += 32;
+    doc.setFillColor(254, 249, 231);
+    doc.rect(15, yPos, 180, 25, 'F');
+    doc.setDrawColor(245, 176, 65);
+    doc.rect(15, yPos, 180, 25);
+    doc.setTextColor(192, 57, 43);
+    doc.setFont("Helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text("⚠️ CUALQUIER DUDA CONFERIR CON LOS ADMINISTRADORES:", 20, yPos + 7);
+    doc.setTextColor(44, 62, 80);
+    doc.text("• PIPO:", 20, yPos + 14);
+    doc.setFont("Helvetica", "normal");
+    doc.text("+55 41 99993-2957", 38, yPos + 14);
+    doc.setFont("Helvetica", "bold");
+    doc.text("• MICHEL:", 20, yPos + 20);
+    doc.setFont("Helvetica", "normal");
+    doc.text("+53 5 006-8487", 42, yPos + 20);
+    
+    // Descarga automática del recibo
+    doc.save(`Recibo_ViajandoLatinoamerica_${ciudadDestino}.pdf`);
+
+    // --- 2. ENVÍO DEL EMAIL ---
+    const datosCorreo = {
+        paisDestino: paisDestino,
+        ciudadDestino: ciudadDestino,
+        fechaViaje: fechaViaje,
+        adultos: adultos,
+        menores: menores,
+        telefono: telefono,
+        listaPasajeros: listaPasajeros.join(", ")
+    };
+    
+    emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", datosCorreo)
+    .then(function(response) {
+        alert("¡Agendamiento Exitoso! Tu travesía ha sido registrada y tu recibo PDF se ha descargado.");
+    }, function(error) {
+        console.error("Fallo al enviar informe interno:", error);
+        alert("¡Agendamiento Exitoso! Tu recibo se descargó (Aviso: Error de red interno).");
+    });
 });
 </script>
 </body>
