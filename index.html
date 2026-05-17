@@ -30,7 +30,7 @@ body {
 }
 .container {
     max-width: 650px;
-    margin: -100px auto 50px auto; /* Ajustado para superponerse mejor al diseño del banner */
+    margin: -100px auto 50px auto;
     background: white;
     padding: 30px;
     border-radius: 15px;
@@ -184,7 +184,7 @@ input[readonly] {
             <label>Nombres y Apellidos de los Pasajeros</label>
             <div id="contenedorPasajeros">
                 <div class="pasajero-input">
-                    <input type="text" class="pasajero-nombre" placeholder="Nombre completo del passenger" required>
+                    <input type="text" class="pasajero-nombre" placeholder="Nombre completo del pasajero" required>
                 </div>
             </div>
             <button type="button" class="btn-add" onclick="agregarPasajeroField()">+ Agregar Pasajero</button>
@@ -264,7 +264,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
         listaPasajeros.push(`${index + 1}. ${input.value}`);
     });
 
-    // --- 1. GENERACIÓN DEL PDF ---
+    // --- GENERACIÓN DEL PDF ---
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
     
@@ -361,10 +361,9 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
     doc.setFont("Helvetica", "normal");
     doc.text("+53 5 006-8487", 42, yPos + 20);
     
-    // Descarga automática del recibo
     doc.save(`Recibo_ViajandoLatinoamerica_${ciudadDestino}.pdf`);
 
-    // --- 2. ENVÍO DEL EMAIL ---
+    // --- ENVÍO DEL EMAIL ---
     const datosCorreo = {
         paisDestino: paisDestino,
         ciudadDestino: ciudadDestino,
