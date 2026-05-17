@@ -136,10 +136,10 @@ input[readonly] {
     <div class="logo-header">
         <img src="1000263173.jpeg" alt="Viajando Latinoamérica Logo">
     </div>
-    <h2>Agendar Travesía</h2>
+    <h2>Agendar Trayectoria</h2>
     
     <form id="agendamientoForm">
-        <div class="step-title">Paso 1: Datos de la Travesía</div>
+        <div class="step-title">Paso 1: Datos de la Trayectoria</div>
         <div class="form-group">
             <label>Origen</label>
             <input type="text" value="Guyana (Salidas)" readonly>
@@ -201,9 +201,9 @@ input[readonly] {
 </div>
 
 <script>
-// Inicializar EmailJS
+// Inicializar EmailJS con tu llave pública real
 (function() {
-    emailjs.init("TU_PUBLIC_KEY");
+    emailjs.init("TU_PUBLIC_KEY"); 
 })();
 
 const capitalesBrasil = [
@@ -303,7 +303,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
     doc.setFont("Helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(29, 161, 242);
-    doc.text("1. DETALLES DE LA TRAVESÍA", 15, 68);
+    doc.text("1. DETALLES DE LA TRAYECTORIA", 15, 68);
     doc.setFontSize(10);
     doc.setTextColor(44, 62, 80);
     doc.text(`• Origen de Salida: Guyana`, 20, 76);
@@ -340,7 +340,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
     doc.text("¡Muchas gracias por su confianza en Viajando Latinoamérica!", 20, yPos + 6);
     doc.setFont("Helvetica", "normal");
     doc.setFontSize(9.5);
-    doc.text("Nos entusiasma ser parte de su próxima travesía. Nuestro equipo ya ha recibido los detalles", 20, yPos + 12);
+    doc.text("Nos entusiasma ser parte de su próxima trayectoria. Nuestro equipo ya ha recibido los detalles", 20, yPos + 12);
     doc.text("de su solicitud y está procesando las rutas logísticas para garantizarle un viaje óptimo.", 20, yPos + 17);
     
     yPos += 32;
@@ -363,7 +363,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
     
     doc.save(`Recibo_ViajandoLatinoamerica_${ciudadDestino}.pdf`);
 
-    // --- ENVÍO DEL EMAIL ---
+    // --- ENVÍO DEL EMAIL (Recuerda configurar tus IDs) ---
     const datosCorreo = {
         paisDestino: paisDestino,
         ciudadDestino: ciudadDestino,
@@ -374,12 +374,12 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
         listaPasajeros: listaPasajeros.join(", ")
     };
     
-    emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", datosCorreo)
+    emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", datosCorreo) 
     .then(function(response) {
-        alert("¡Agendamiento Exitoso! Tu travesía ha sido registrada y tu recibo PDF se ha descargado.");
+        alert("¡Agendamiento Exitoso! Tu trayectoria ha sido registrada y tu recibo PDF se ha descargado.");
     }, function(error) {
         console.error("Fallo al enviar informe interno:", error);
-        alert("¡Agendamiento Exitoso! Tu recibo se descargó (Aviso: Error de red interno).");
+        alert("¡Agendamiento Exitoso! Tu recibo se descargó (Aviso: Error de red interno o llaves faltantes).");
     });
 });
 </script>
