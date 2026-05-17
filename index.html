@@ -201,9 +201,9 @@ input[readonly] {
 </div>
 
 <script>
-// Inicializar EmailJS con tu llave pública real
+// Inicializar EmailJS con tu llave pública ya vinculada
 (function() {
-    emailjs.init("TU_PUBLIC_KEY"); 
+    emailjs.init("9YHq6Q9nIDiSZj_sK"); 
 })();
 
 const capitalesBrasil = [
@@ -363,7 +363,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
     
     doc.save(`Recibo_ViajandoLatinoamerica_${ciudadDestino}.pdf`);
 
-    // --- ENVÍO DEL EMAIL (Recuerda configurar tus IDs) ---
+    // --- ENVÍO DEL EMAIL REAL CON TUS LLAVES ---
     const datosCorreo = {
         paisDestino: paisDestino,
         ciudadDestino: ciudadDestino,
@@ -374,7 +374,7 @@ document.getElementById('agendamientoForm').addEventListener('submit', function(
         listaPasajeros: listaPasajeros.join(", ")
     };
     
-    emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", datosCorreo) 
+    emailjs.send("service_ycmmhmf", "template_yo5nfjg", datosCorreo) 
     .then(function(response) {
         alert("¡Agendamiento Exitoso! Tu trayectoria ha sido registrada y tu recibo PDF se ha descargado.");
     }, function(error) {
